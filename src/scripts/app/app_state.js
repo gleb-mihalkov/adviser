@@ -46,8 +46,7 @@
 		this.subTemplate = null;
 
 		// Задаем title.
-		if (this.data.subject) this.title = 'Выбор ' + this.data.subject;
-		else this.title = 'Помощник в принятии решений 1.0';
+		this.title = 'Помощник в принятии решений';
 	}
 
 	/**

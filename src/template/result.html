@@ -10,7 +10,7 @@
 				<div class="ctr">
 					<div class="ctr__in  tlg">
 						<h1 class="hg hg--pm">Результаты</h1>
-						<p>Итак, мы выбирали <strong><?= subject; ?></strong>. Места распределились таким образом:</p>
+						<p>Итак, мы выбирали &laquo;<strong><?= subject; ?></strong>&raquo;. Места распределились таким образом:</p>
 						<ol class="rs">
 							<? for (var i = 0; i < order.length; i++) { ?>
 								<? var object = objects[order[i]]; ?>
@@ -42,8 +42,10 @@
 							<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter"></div>
 						</p>
 						<p>
-							<a target="_blank" rel="nofollow" href="https://github.com/gleb-mihalkov/adviser">Исходники</a>
+							<a href="<?= window.location.hash; ?>" class="js-lnk">Ссылка на страницу</a><br>
+							нажмите на ссылку правой кнопкой мыши и выберите пункт "Скопировать адрес ссылки".
 						</p>
+						<p><a target="_blank" rel="nofollow" href="https://github.com/gleb-mihalkov/adviser">Исходный код</a></p>
 					</div>
 				</div>
 			</div>

@@ -624,6 +624,20 @@
 		&--sd {
 			background-color: #000;
 			color: #fff;
+
+			a {
+				$c: #551a8b;
+				transition: all 250ms ease-in-out;
+				color: $c;
+
+				&:hover {
+					color: lighten($c, 75%);
+				}
+
+				&:active {
+					color: $c;
+				}
+			}
 			
 			&:before, &:after {
 				height: 2rem;
