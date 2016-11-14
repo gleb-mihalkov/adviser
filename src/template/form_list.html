@@ -1,0 +1,14 @@
+<script type="text/html" id="tpFormList">
+	<?
+		var list = $0;
+		var title = $1;
+	?>
+	<? for (var i = 0; i < list.length; i++) { ?>
+		<?= $.template('#tpFormListItem', list[i], title); ?>
+	<? } ?>
+	<?= $.template('#tpFormListItem', '', title); ?>
+	<div class="frm__it  frm__it--btm">
+		<button type="back" class="btn btn--pl">Назад</button>
+		<button type="submit" class="btn btn--wd  ftr" tabindex="">Далее</button>
+	</div>
+</script>

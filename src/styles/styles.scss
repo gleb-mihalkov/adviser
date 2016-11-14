@@ -1,0 +1,721 @@
+/// ---------
+/// Анимации.
+/// ---------
+	
+	// Выезд наверх.
+	@keyframes slideToTop {
+		from { transform: translateY(0); }
+		to { transform: translateY(-100%); }
+	}
+	
+	// Выезд снизу вверх.
+	@keyframes slideFromBottom {
+		from { transform: translateY(100%); }
+		to { transform: translateY(0); }
+	}
+
+	// Выезд вниз.
+	@keyframes slideToBottom {
+		from { transform: translateY(0); }
+		to { transform: translateY(100%); }
+	}
+
+	// Выезд сверху.
+	@keyframes slideFromTop {
+		from { transform: translateY(-100%); }
+		to { transform: translateY(0); }
+	}
+	
+	// Выезд слева.
+	@keyframes slideFromLeft {
+		from { transform: translateX(-100%); }
+		to { transform: translateX(0); }
+	}
+	
+	// Выезд вправо.
+	@keyframes slideToRight {
+		from { transform: translateX(0); }
+		to { transform: translateX(100%); }
+	}
+
+	// Выезд налево.
+	@keyframes slideToLeft {
+		from { transform: translateX(0); }
+		to { transform: translateX(-100%); }
+	}
+	
+	// Выезд справа.
+	@keyframes slideFromRight {
+		from { transform: translateX(100%); }
+		to { transform: translateX(0); }
+	}
+	
+	// Выезд сверху из-за границы экрана.
+	@keyframes slideFromTopFar {
+		from { transform: translateY(-200%); }
+		to { transform: translateY(0); }
+	}
+
+/// -----------------------
+/// Сброс стилей элементов.
+/// -----------------------
+
+	// Сброс для всех элементов.
+	* {
+		&, &:before, &:after {
+			box-sizing: border-box;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&:first-child {
+			margin-top: 0 !important;
+		}
+
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	// Сброс для BODY.
+	html, body {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	// Сброс для полей ввода текста.
+	input, button, textarea, select {
+		font-family: inherit;
+		font-size: inherit;
+	}
+
+	// Сброс стилей кнопки.
+	button {
+		cursor: pointer;
+	}
+	
+	// Сброс для ссылок.
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+
+/// ----------------------------------------
+/// Переменные, абстрактные классы, миксины.
+/// ----------------------------------------
+	
+	// Базовый размер шрифта.
+	$fz: 16px;
+
+	// Базовый коэффициент высоты строки.
+	$lh: 1.25;
+
+	// Базовая высота строки.
+	$th: $fz * $lh;
+
+/// ------------------------------------
+/// Стили текстовых блоков и параграфов.
+/// ------------------------------------
+	
+	// Стили текста.
+	html {
+		font-family: 'EB Garamond', 'sans';
+		font-size: $fz;
+		line-height: $lh;
+	}
+
+	// Заголовок.
+	.hg {
+		position: relative;
+		font-weight: normal;
+		font-size: 2rem;
+		margin: 1rem 0;
+
+		&--pm {
+			border-bottom: 1px solid lighten(#000, 95%);
+			padding-bottom: .5rem;
+			margin: 2rem 0;
+		}
+
+		&--sd {
+			border-bottom: 1px solid lighten(#000, 20%);
+			padding-top: 1.5rem;
+			padding-bottom: .5rem;
+			margin: 1.25rem 0;
+			font-size: 1.5rem;
+		}
+
+		&__pb {
+			border-top: 1px solid lighten(#000, 75%);
+			position: absolute;
+			bottom: -1px;
+			left: 0;
+			display: block;
+			width: 0%;
+			height: 1px;
+		}
+	}
+	
+	// Параграф.
+	.ph {
+		margin: 1rem 0;
+	}
+	
+	// Смещенный вправо элемент.
+	.ftr {
+		float: right;
+	}
+	
+	// Смещенный влево элемент.
+	.ftl {
+		float: left;
+	}
+	
+	// Делает элемент блочным, шириной на весь контейнер.
+	.db {
+		display: block;
+		width: 100%;
+	}
+
+	// Clear fix.
+	.cf {
+		&:after {
+			display: table;
+			clear: both;
+			content: '';
+		}
+	}
+	
+	// Текст прижат вправо.
+	.tar {
+		text-align: right;
+	}
+	
+	// Текст по центру.
+	.tac {
+		text-align: center;
+	}
+	
+	// Увеличенный размер шрифта.
+	.tlg {
+		font-size: 1.25rem;
+	}
+	
+	// Сильно увеличенный шрифт.
+	.fwb {
+		font-size: 1.75rem;
+		font-weight: bold;
+	}
+	
+	// Блок произвольного текста.
+	.txt {
+		font-size: 1.25rem;
+	}
+	
+	// Иконка названия клавиши в тексте.
+	.key {
+		border: 1px solid lighten(#000, 50%);
+		border-radius: $fz/4;
+		display: inline-block;
+		font-size: 1rem;
+		padding: 0 .25rem;
+	}
+
+/// ---------------
+/// Элементы ввода.
+/// ---------------
+	
+	// Разметка формы.
+	.frm {
+		display: block;
+
+		&--w-sd {
+			$pb: $fz * $lh * 1.25 + $fz * 2;
+			position: relative;
+			min-height: 100%;
+			padding-bottom: $pb;
+		}
+
+		&__it {
+			margin: 1rem 0;
+
+			&:after {
+				display: table;
+				clear: both;
+				content: '';
+			}
+
+			&--btm {
+				border-top: 1px solid lighten(#000, 95%);
+				padding-top: 1rem;
+			}
+		}
+
+		&__sd {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding-top: 2rem;
+			font-size: 1.25rem;
+		}
+	}
+
+	// Элемент поле ввода или кнопка.
+	%elt {
+		transition: all 250ms ease-in-out;
+		background-color: #fff;
+		border: 1px solid lighten(#000, 75%);
+		border-radius: $fz / 4;
+		display: inline-block;
+		padding: .5rem .75rem;
+		font-size: 1.25rem;
+		color: #000;
+	}
+
+	// Поле ввода текста.
+	.npt {
+		@extend %elt;
+
+		&:focus {
+			border: 1px solid lighten(#000, 50%);
+		}
+
+		&--bk {
+			display: block;
+			width: 100%;
+		}
+	}
+	
+	// Кнопка.
+	.btn {
+		@extend %elt;
+		text-align: center;
+		user-select: none;
+
+		&:hover, &:focus {
+			border: 1px solid lighten(#000, 50%);
+		}
+
+		&--wd {
+			padding-right: 2rem;
+			padding-left: 2rem;
+		}
+
+		&--bk {
+			display: block;
+			width: 100%;
+		}
+
+		&--pl {
+			background: none;
+			border-color: transparent;
+			box-shadow: none;
+			color: #000;
+
+			&:hover {
+				box-shadow: none;
+			}
+		}
+
+		&--c-rt {
+			border-bottom-left-radius: 0;
+			border-top-left-radius: 0;
+		}
+	}
+	
+	// Иконка.
+	.icn {
+		$sz: $fz * .5 * 2 + $fz * 1.25 * $lh + 3px;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-position: 50%;
+		background-size: $fz;
+		border: none;
+		display: inline-block;
+		width: $sz;
+		height: $sz;
+		padding: 0;
+
+		&--cls {
+			background-image: url('img/close.png');
+		}
+
+		&--add {
+			background-image: url('img/add.png');
+		}
+
+		&--hlp {
+			background-image: url('img/help.png');
+			background-size: 75%;
+		}
+	}
+	
+	// Переключатель.
+	.rdo {
+		$_ln: $fz * 1.25 * 1.25;
+		position: relative;
+		display: inline-block;
+		font-size: 0;
+		cursor: pointer;
+		user-select: none;
+		
+		&__pk {
+			display: block;
+			width: 0;
+			height: 0;
+		}
+
+		&__ic {
+			$_sz: $fz;
+			$_ot: ($_ln - $_sz) * .5;
+			transition: all 250ms ease-in-out;
+			border: 1px solid lighten(#000, 75%);
+			border-radius: $_sz;
+			position: absolute;
+			top: $_ot;
+			left: 0;
+			display: block;
+			width: $_sz;
+			height: $_sz;
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&:before {
+				$_sz: $fz * .5;
+				$_ot: -$_sz * .5;
+				transition: transform 250ms ease-in-out;
+				transform: scale(0, 0);
+				background-color: lighten(#000, 25%);
+				border-radius: $_sz;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				display: block;
+				width: $_sz;
+				height: $_sz;
+				margin-top: $_ot;
+				margin-left: $_ot;
+				content: '';
+			}
+		}
+
+		&__pk:checked + &__ic:before {
+			transform: scale(1, 1);
+		}
+
+		&__pk:focus + &__ic {
+			border: 1px solid lighten(#000, 25%);
+		}
+
+		&__tt {
+			$_pl: $fz * 1.5;
+			$_fz: $fz * 1.25;
+			display: block;
+			padding-left: $_pl;
+			font-size: $_fz;
+		}
+
+		&--bk {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	// Группа элементов ввода.
+	.npt-gp {
+		position: relative;
+		display: inline-block;
+
+		&--bk {
+			width: 100%;
+		}
+
+		&--pd .npt {
+			padding-right: 44px;
+			padding-left: 44px;
+		}
+
+		&__in {
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: block;
+			font-size: 0;
+
+			&--lt {
+				left: 0;
+				right: auto;
+			}
+		}
+	}
+
+/// ---------------
+/// Блоки разметки.
+/// ---------------
+	
+	// Блок страниц.
+	.pg {
+		display: block;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		&__it {
+			background-color: #fff;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		&--vt {
+			&.next {
+				& > .enter {
+					animation: slideFromBottom .75s ease-in-out both;
+				}
+
+				& > .leave {
+					animation: slideToTop .75s ease-in-out both;
+				}
+			}
+
+			&.back {
+				& > .enter {
+					animation: slideFromTop .75s ease-in-out both;
+				}
+				& > .leave {
+					animation: slideToBottom .75s ease-in-out both;
+				}
+			}
+		}
+
+		&--hz {
+			&.next {
+				& > .enter {
+					animation: slideFromRight .75s ease-in-out both;
+				}
+				& > .leave {
+					animation: slideToLeft .75s ease-in-out both;
+				}
+			}
+
+			&.back {
+				& > .enter {
+					animation: slideFromLeft .72s ease-in-out both;
+				}
+
+				& > .leave {
+					animation: slideToRight .75s ease-in-out both;
+				}
+			}
+		}
+	}
+	
+	// Экран с двумя областями для контента: левой - основной, и правой - дополнительной.
+	.srn {
+		$_sd-w: 5/12 * 100%;
+		$_sd-maw: 480px;
+		$_sd-miw: 320px;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		&__mn, &__sd {
+			position: absolute;
+			top: 0;
+			height: 100%;
+		}
+
+		&__mn {
+			z-index: 100;
+			left: 0;
+			width: 100%;
+			padding-right: $_sd-w;
+		}
+
+		&__sd {
+			transition: transform 250ms ease-in-out;
+			transform: translateX(0);
+			z-index: 200;
+			right: 0;
+			width: $_sd-w;
+			max-width: $_sd-maw;
+			min-width: $_sd-miw;
+		}
+
+		@media screen and (min-width: 1152px) {
+			&__mn {
+				padding-right: $_sd-maw;
+			}
+		}
+
+		@media screen and (max-width: 767.999px) {
+			&__mn {
+				padding-right: 0;
+			}
+
+			&__sd {
+				transform: translateX(100%);
+			}
+
+			&.active &__sd {
+				transform: translateX(0);
+			}
+		}
+	}
+
+	// Контейнер с вертикальной прокруткой без скролбаров и
+	// уходом в прозрачность переполняющего контента.
+	.ctr {
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		&:before, &:after {
+			position: absolute;
+			left: 0;
+			z-index: 100;
+			display: block;
+			width: 100%;
+			height: 3rem;
+			content: '';
+		}
+
+		@media screen and (max-height: 320px) {
+			&:before, &:after {
+				display: none;
+			}
+		}
+
+		&:before {
+			background-image: linear-gradient(to top, transparent, #fff);
+			top: 0;
+		}
+
+		&:after {
+			background-image: linear-gradient(to bottom, transparent, #fff);
+			bottom: 0;
+		}
+
+		&__in {
+			height: 100%;
+			padding: 3rem 2rem;
+			overflow-y: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		&--sd {
+			background-color: #000;
+			color: #fff;
+			
+			&:before, &:after {
+				height: 2rem;
+			}
+
+			&:before {
+				background-image: linear-gradient(to top, transparent, #000);
+			}
+
+			&:after {
+				background-image: linear-gradient(to bottom, transparent, #000);
+			}
+
+			.ctr__in {
+				padding: 2rem 4rem;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			&__in {
+				padding-left: 3rem;
+				padding-right: 3rem;
+			}
+		}
+	}
+
+/// ---------------------
+/// Всплывающие элементы.
+/// ---------------------
+	
+	// Всплывающее уведомление.
+	.pp {
+		$bp: 480px + $fz * 2;
+		transition: all 250ms ease-in-out;
+		transform: translateY(-150%);
+		background-color: #000;
+		border: 1px solid #fff;
+		position: absolute;
+		z-index: 500;
+		top: $fz;
+		left: 50%;
+		width: 100%;
+		max-width: 480px;
+		margin-left: -240px;
+		padding: $fz;
+		font-size: $fz * 1.25;
+		text-align: center;
+		color: #fff;
+
+		&.active {
+			transform: translateY(0);
+		}
+
+		@media screen and (min-width: $bp) {
+			opacity: 0;
+
+			&.active {
+				opacity: 1;
+			}
+		}
+
+		@media screen and (max-width: $bp) {
+			transform: translateY(150%);
+			border: none;
+			top: auto;
+			bottom: 0;
+			left: 0;
+			margin-left: 0;
+			min-width: 100%;
+			max-width: 100%;
+		}
+	}
+
+	// Кнопка показа / скрытия меню.
+	.tgr {
+		transition: all 250ms ease-in-out;
+		position: absolute;
+		z-index: 900;
+		top: .5rem;
+		right: .5rem;
+		display: none;
+		width: 44px;
+		height: 44px;
+		font-size: 0;
+
+		&__icn {
+			background-image: url('img/help.png');
+			background-size: 32px;
+		}
+
+		&__icn.active {
+			background-image: url('img/close.png');
+			background-size: 16px;
+		}
+
+		@media screen and (max-width: 767.999px) {
+			display: block;
+		}
+	}

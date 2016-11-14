@@ -1,0 +1,17 @@
+<script type="text/html" id="tpFormListItem">
+	<?
+		var name = $0;
+		var title = $1;
+	?>
+	<div class="frm__it  js-frm-lst__it">
+		<label class="npt-gp npt-gp--bk npt-gp--pd">
+			<input type="text" name="item" class="npt npt--bk  js-frm-lst__vl" autocomplete="off" placeholder="Введите <?= title; ?>" value="<?= name; ?>" tabindex="">
+			<span class="npt-gp__in npt-gp__in--lt">
+				<button type="button" class="icn icn--add  js-frm-lst__mk"></button>
+			</span>
+			<span class="npt-gp__in npt-gp__in--rt">
+				<button type="button" class="icn icn--cls  js-frm-lst__rm"></button>
+			</span>
+		</label>
+	</div>
+</script>

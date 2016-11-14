@@ -1,0 +1,38 @@
+<script type="text/html" id="tpObjects">
+	<?
+		var objects = $1.objects || [];
+		var cmpCount = window.calc.cmpCount(objects.length);
+		var cmpText = window.lang.numberWord(cmpCount, 'шаг', 'шага', 'шагов');
+	?>
+	<div class="pg__it">
+		<div class="srn" id="srnMain">
+			<div class="srn__mn">
+				<div class="ctr">
+					<div class="ctr__in">
+						<form action="#" class="frm  frm--w-sd  js-frm-lst  js-frm-obj  js-frm-cc" name="objects" data-item="#tpFormListItem" data-item-title="вариант">
+							<h1 class="hg hg--pm">Из каких вариантов мы выбираем?</h1>
+							<?= $.template('#tpFormList', objects, 'вариант'); ?>
+							<div class="frm__sd">
+								<p class="tac">Итого:
+									<strong class="js-frm-cc__cc"><?= cmpCount; ?></strong>
+									<span class="js-frm-cc__tt"><?= cmpText; ?></span>.
+								</p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="srn__sd">
+				<div class="ctr ctr--sd">
+					<div class="ctr__in  txt txt--sd">
+						<h2 class="hg hg--sd">Подсказка</h2>
+						<p>Теперь следует задать варианты выбора. Если, к примеру, мы выбираем автомобиль, то вариантами выбора могут быть "тойота", "ауди" или "форд".</p>
+						<p>Чтобы добавить вариант, следует нажать на плюс в левом углу любого текстового поля или просто нажать клавишу <span class="key">Enter</span>.</p>
+						<p>Чтобы очистить строку, нажмите крестик в правой стороне текстового поля. Чтобы удалить тестовое поле полностью, нажмите крестик ещё раз. Того же эффекта можно добиться, нажав <span class="key">Ctrl или Shift</span> + <span class="key">Del или Backspace</span>.</p>
+						<p>Чтобы перейти к следующему шагу, нажмите кноку <span class="key">Далее</span> или <span class="key">Ctrl или Shift</span> + <span class="key">Enter</span>.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

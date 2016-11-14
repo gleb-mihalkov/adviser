@@ -1,0 +1,40 @@
+<script type="text/html" id="tpCrits">
+	<?
+		var list = $1.crits || [];
+		var objects = $1.objects || [];
+		var cmpBase = window.calc.cmpCount(objects.length);
+		var cmpCount = window.calc.cmpCount(list.length, cmpBase);
+		var cmpText = window.lang.numberWord(cmpCount, 'шаг', 'шага', 'шагов');
+	?>
+	<div class="pg__it">
+		<div class="srn" id="srnMain">
+			<div class="srn__mn">
+				<div class="ctr">
+					<div class="ctr__in">
+						<form action="#" class="frm  frm--w-sd  js-frm-lst  js-frm-crt  js-frm-cc" name="crits" data-item="#tpFormListItem" data-item-title="критерий" data-cc="<?= cmpBase; ?>">
+							<h1 class="hg hg--pm">По каким критериям сравниваем?</h1>
+							<?= $.template('#tpFormList', list, 'критерий'); ?>
+							<div class="frm__sd">
+								<p class="tac">Итого:
+									<strong class="js-frm-cc__cc"><?= cmpCount; ?></strong></strong>
+									<span class="js-frm-cc__tt"><?= cmpText; ?></span>.
+								</p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="srn__sd">
+				<div class="ctr ctr--sd">
+					<div class="ctr__in  txt txt--sd">
+						<h2 class="hg hg--sd">Подсказка</h2>
+						<p>Этот шаг можно пропустить.</p>
+						<p>Критерии выбора нужны для получения более точного результата. Для нашего примера с автомобилем это могут быть: "скорость", "цена", "внешний вид" и т.д.</p>
+						<p>Следует помнить, что от количества критериев напрямую зависит время принятия решения. В нижней части экрана отображается, сколько шагов потребуется для выбора.</p>
+						<p>Управление на этой странице аналогично предыдущей.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

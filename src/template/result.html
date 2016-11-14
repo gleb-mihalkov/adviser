@@ -1,0 +1,49 @@
+<script type="text/html" id="tpResult">
+	<?
+		var subject = $1.subject;
+		var order = $0.order;
+		var objects = $1.objects;
+	?>
+	<div class="pg__it">
+		<div class="srn" id="srnMain">
+			<div class="srn__mn">
+				<div class="ctr">
+					<div class="ctr__in  tlg">
+						<h1 class="hg hg--pm">Результаты</h1>
+						<p>Итак, мы выбирали <strong><?= subject; ?></strong>. Места распределились таким образом:</p>
+						<ol>
+							<? for (var i = 0; i < order.length; i++) { ?>
+								<? var object = objects[order[i]]; ?>
+								<? if (i === 0) { ?>
+									<li class="fwb"><?= object; ?></li>
+								<? } else { ?>
+									<li><?= object; ?></li>
+								<? } ?>
+							<? } ?>
+						</ol>
+						<p class="cf">
+							<button type="back" class="btn btn--pl">Назад</button>
+							<a href="#p=s" class="btn btn--pm btn--wd  ftr">Еще раз</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="srn__sd">
+				<div class="ctr ctr--sd">
+					<div class="ctr__in  txt txt--sd">
+						<h2 class="hg hg--sd">Поделиться</h2>
+						<p>
+							<? var uriA = '//yastatic.net/es5-shims/0.0.2/es5-shims.min.js'; ?>
+							<? var uriB = '//yastatic.net/share2/share.js'; ?>
+							<? var scriptA = '<' + 'script' + ' src="' + uriA + '"' + '>' + '</' + 'script' + '>'; ?>
+							<? var scriptB = '<' + 'script' + ' src="' + uriB + '"' + '>' + '</' + 'script' + '>'; ?>
+							<?= scriptA; ?>
+							<?= scriptB; ?>
+							<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter"></div>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

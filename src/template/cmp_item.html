@@ -1,0 +1,60 @@
+<script type="text/html" id="tpCmpItem">
+	<?
+		var valueA = $0.valueA;
+		var valueB = $0.valueB;
+		var value = $0.value;
+		var crit = $0.crit;
+
+		var step = $0.index + 1;
+		var length = $0.maxIndex + 1;
+
+		var percent = $0.index / $0.maxIndex * 100;
+		var title = $1;
+	?>
+	<div class="pg__it">
+		<div class="ctr">
+			<div class="ctr__in">
+				<form action="#" class="frm frm--w-sd  js-frm-cp">
+					<h1 class="hg hg--pm">
+						Сравниваем <?= title; ?>
+						<div class="hg__pb" style="width: <?= percent; ?>%"></div>
+					</h1>
+					<? if (crit) { ?>
+						<p class="tlg">Если учитывать только <strong><?= crit; ?></strong>, выберите, что для вас важнее:</p>
+					<? } else { ?>
+						<p class="tlg">Выберите, что для вас важнее:</p>
+					<? } ?>
+					<div class="frm__it">
+						<label class="rdo rdo--bk">
+							<span class="rdo__tt"><?= valueA; ?></span>
+							<? if (value === true) { ?>
+								<input type="radio" name="value" value="1" class="rdo__pk  js-frm-cp__vl" checked="" tabindex="">
+							<? } else { ?>
+								<input type="radio" name="value" value="1" class="rdo__pk  js-frm-cp__vl" tabindex="">
+							<? } ?>
+							<span class="rdo__ic"></span>
+						</label>
+					</div>
+					<div class="frm__it">
+						<label class="rdo rdo--bk">
+							<span class="rdo__tt"><?= valueB; ?></span>
+							<? if (value === false) { ?>
+								<input type="radio" name="value" value="0" class="rdo__pk  js-frm-cp__vl" checked="" tabindex="">
+							<? } else { ?>
+								<input type="radio" name="value" value="0" class="rdo__pk  js-frm-cp__vl" tabindex="">
+							<? } ?>
+							<span class="rdo__ic"></span>
+						</label>
+					</div>
+					<div class="frm__it  frm__it--btm">
+						<button type="back" class="btn btn--pl">Назад</button>
+						<button type="submit" class="btn btn--wd  ftr" tabindex="">Далее</button>
+					</div>
+					<div class="frm__sd">
+						<p class="tac"><strong><?= step; ?></strong> из <strong><?= length; ?></strong></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</script>

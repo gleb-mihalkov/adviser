@@ -1,0 +1,39 @@
+<script type="text/html" id="tpSubject">
+	<?
+		var subject = $1.subject;
+	?>
+	<div class="pg__it">
+		<div class="srn" id="srnMain">
+			<div class="srn__mn">
+				<div class="ctr">
+					<div class="ctr__in">
+						<form action="#" class="frm  js-frm-vl  js-frm-sbj" name="subject">
+							<h1 class="hg hg--pm">Что мы выбираем?</h1>
+							<label class="frm__it">
+								<div class="npt-gp npt-gp--bk">
+									<input type="text" name="item" class="npt npt--bk  js-frm-vl__vl" autocomplete="off" tabindex="" placeholder="Введите объект выбора" value="<?= subject; ?>">
+									<span class="npt-gp__in npt-gp__in--rt">
+										<button type="button" class="icn icn--cls  js-frm-vl__rm"></button>
+									</span>
+								</label>
+							</div>
+							<div class="frm__it frm__it--btm">
+								<button type="submit" class="btn btn--wd  ftr" tabindex="">Далее</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="srn__sd">
+				<div class="ctr ctr--sd">
+					<div class="ctr__in  txt txt--sd">
+						<h2 class="hg hg--sd">Подсказка</h2>
+						<p>Вначале следует ввести, что мы выбираем, например, "автомобиль".</p>
+						<p>В будущем это потребуется для того, чтобы вы смогли поделиться результатами своего выбора в блогах или социальных сетях.</p>
+						<p>Когда вы заполните текстовое поле, нажмите кнопку <span class="key">Далее</span>.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
