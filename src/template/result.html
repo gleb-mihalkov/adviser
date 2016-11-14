@@ -33,17 +33,24 @@
 					<div class="ctr__in  txt txt--sd">
 						<h2 class="hg hg--sd">Поделиться</h2>
 						<p>
-							<? var uriA = '//yastatic.net/es5-shims/0.0.2/es5-shims.min.js'; ?>
-							<? var uriB = '//yastatic.net/share2/share.js'; ?>
-							<? var scriptA = '<' + 'script' + ' src="' + uriA + '"' + '>' + '</' + 'script' + '>'; ?>
-							<? var scriptB = '<' + 'script' + ' src="' + uriB + '"' + '>' + '</' + 'script' + '>'; ?>
-							<?= scriptA; ?>
-							<?= scriptB; ?>
-							<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter"></div>
+							<?= '<' + 'script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"' + '></' + 'script' + '>'; ?>
+							<?= '<' + 'script src="' + '//yastatic.net/share2/share.js' + '"></' + 'script' + '>'; ?>
+							<span class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter"></span>
+							<?= '<' + 'script' + '>'; ?>
+								function onYa() {
+									Ya.share2(block, {
+										content: {
+											uri: window.location.href,
+											title: window.document.title,
+											description: 'Мои результаты выбора для "<?= subject; ?>".'
+										}
+									});
+								};	
+							<?= '</' + 'script' + '>'; ?>
 						</p>
 						<p>
 							<a href="<?= window.location.hash; ?>" class="js-lnk">Ссылка на страницу</a><br>
-							нажмите на ссылку правой кнопкой мыши и выберите пункт "Скопировать адрес ссылки".
+							нажмите на ссылку правой кнопкой мыши и выберите пункт &laquo;Скопировать адрес ссылки&raquo;.
 						</p>
 						<p><a target="_blank" rel="nofollow" href="https://github.com/gleb-mihalkov/adviser">Исходный код</a></p>
 					</div>
