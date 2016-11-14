@@ -11,17 +11,17 @@
 					<div class="ctr__in  tlg">
 						<h1 class="hg hg--pm">Результаты</h1>
 						<p>Итак, мы выбирали <strong><?= subject; ?></strong>. Места распределились таким образом:</p>
-						<ol>
+						<ol class="rs">
 							<? for (var i = 0; i < order.length; i++) { ?>
 								<? var object = objects[order[i]]; ?>
 								<? if (i === 0) { ?>
-									<li class="fwb"><?= object; ?></li>
+									<li><?= object; ?></li>
 								<? } else { ?>
 									<li><?= object; ?></li>
 								<? } ?>
 							<? } ?>
 						</ol>
-						<p class="cf">
+						<p class="cf  lnt">
 							<a href="#p=s" class="btn btn--pm btn--wd  ftr" tabindex="">Еще раз</a>
 							<button type="back" class="btn btn--pl" tabindex="">Назад</button>
 						</p>

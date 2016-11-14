@@ -160,11 +160,6 @@
 		}
 	}
 	
-	// Параграф.
-	.ph {
-		margin: 1rem 0;
-	}
-	
 	// Смещенный вправо элемент.
 	.ftr {
 		float: right;
@@ -173,12 +168,6 @@
 	// Смещенный влево элемент.
 	.ftl {
 		float: left;
-	}
-	
-	// Делает элемент блочным, шириной на весь контейнер.
-	.db {
-		display: block;
-		width: 100%;
 	}
 
 	// Clear fix.
@@ -190,11 +179,6 @@
 		}
 	}
 	
-	// Текст прижат вправо.
-	.tar {
-		text-align: right;
-	}
-	
 	// Текст по центру.
 	.tac {
 		text-align: center;
@@ -203,12 +187,6 @@
 	// Увеличенный размер шрифта.
 	.tlg {
 		font-size: 1.25rem;
-	}
-	
-	// Сильно увеличенный шрифт.
-	.fwb {
-		font-size: 1.75rem;
-		font-weight: bold;
 	}
 	
 	// Блок произвольного текста.
@@ -223,6 +201,32 @@
 		display: inline-block;
 		font-size: 1rem;
 		padding: 0 .25rem;
+	}
+
+	// Список результатов.
+	.rs {
+		padding: 1rem 0 1rem 2.5rem;
+
+		li {
+			padding-left: .5rem;
+			margin: .5rem 0;
+
+			&:nth-child(1), &:nth-child(2), &:nth-child(3) {
+				font-weight: bold;
+			}
+			&:nth-child(1) {
+				font-size: 1.5rem;
+			}
+			&:nth-child(2) {
+				font-size: 1.25rem;
+			}
+		}
+	}
+
+	// Параграф, отчеркнутый сверху линией.
+	.lnt {
+		border-top: 1px solid lighten(#000, 95%);
+		padding-top: 1rem;
 	}
 
 /// ---------------
