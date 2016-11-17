@@ -140,7 +140,7 @@ Gulp.task('build:js', (cb) => {
 
 Gulp.task('build:html', (cb) => {
   src('./*.html', cb)
-    .pipe(htmlExtend())
+    .pipe(htmlExtend({annotations: false}))
     .pipe(dst(cb))
 })
 

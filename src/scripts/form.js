@@ -38,7 +38,6 @@
 		var $group = $('*[tabindex]');
 		var index = 0;
 
-
 		for (var i = 0; i < $group.length; i++) {
 			if (e.target !== $group[i]) continue;
 			index = i;

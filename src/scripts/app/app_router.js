@@ -37,7 +37,8 @@
 		var current = this.getCurrent();
 		var last = this.history[this.history.length - 1];
 		var isBack = current == last;
-		if (isBack) this.history.push(current);
+		console.log(this.history);
+		if (!isBack) this.history.push(current); else this.history.pop();
 
 		this._isBack = isBack;
 		if (this.onroute) this.onroute(current);
