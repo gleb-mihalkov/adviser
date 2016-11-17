@@ -58,6 +58,9 @@
 		if (isNewTemplate) $pgSub = null;
 		lastTemplate = template;
 
+		subTemplate = subTemplate ? subTemplate.replace(/\?.+$/g, '') : null;
+		template = template.replace(/\?.+$/g, '');
+
 		if (subTemplate) {
 			if ($pgSub == null || $pgSub.length === 0) {
 				var main = $.template(template, state, state.data);

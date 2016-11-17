@@ -12,7 +12,7 @@
 	function cmpCount(count, base) {
 		var cmp = (count * count - count) / 2;
 		if (!base) return cmp;
-
+		if (!count) count = 1;
 		return cmp + count * base;
 	}
 

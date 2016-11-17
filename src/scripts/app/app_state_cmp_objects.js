@@ -43,6 +43,7 @@
 		this.maxIndex = length - 1;
 		this.step = this.data.cmpCritsLength + this.index + 1;
 
+		if (this.data.isCrits) this.template += '?' + this.crit;
 		return false;
 	};
 
