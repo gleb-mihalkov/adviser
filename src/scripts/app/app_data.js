@@ -18,12 +18,30 @@
 	}
 
 	/**
+	 * Коллекция экранируемых значений.
+	 * @type {Object}
+	 */
+	var ESCAPE = {
+		'%25': /%/g,
+		'%20': /\s/g,
+		'%3F': /\?/g,
+		'%3D': /=/g,
+		'%26': /&/g,
+		'%23': /#/g,
+		'%2C': /,/g
+	};
+
+	/**
 	 * Кодирует значение для вставки в строку.
 	 * @param  {String} value Значение.
 	 * @return {String}       Результат.
 	 */
 	function encodeValue(value) {
 		if (value == null) return null;
+		for (var code in ESCAPE) {
+			if (!ESCAPE.hasOwnProperty(code)) continue;
+			value = value.replace(ESCAPE[code], code);
+		}
 		return value;
 	}
 
@@ -34,7 +52,7 @@
 	 */
 	function decodeValue(value) {
 		if (value == null) return null;
-		return value;
+		return decodeURIComponent(value);
 	}
 
 	/**
