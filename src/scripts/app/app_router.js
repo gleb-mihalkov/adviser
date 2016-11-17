@@ -10,7 +10,7 @@
 	function AppRouter() {
 		this.onchange = bind(this, this.onchange);
 		this._isForce = false;
-		this._isBack = false;
+		this._isBack = null;
 		this.history = [];
 	}
 
@@ -30,15 +30,21 @@
 	 * Обрабатывает смену адреса страницы.
 	 */
 	AppRouter.prototype.onchange = function() {
+		var current = this.getCurrent();
+		var isBack = false;
+
+		if (this.history.length > 1) {
+			var last = this.history[this.history.length - 2];
+			isBack = current === last;
+			if (isBack) this.history.pop(); else this.history.push(current);
+		}
+		else {
+			this.history.push(current);
+		}
+
 		var isForce = this._isForce;
 		this._isForce = false;
 		if (isForce) return;
-
-		var current = this.getCurrent();
-		var last = this.history[this.history.length - 1];
-		var isBack = current == last;
-		console.log(this.history);
-		if (!isBack) this.history.push(current); else this.history.pop();
 
 		this._isBack = isBack;
 		if (this.onroute) this.onroute(current);
@@ -71,7 +77,7 @@
 	AppRouter.prototype._replace = function(uri, isRoute) {
 		if (this.isCurrent(uri)) return;
 
-		this.history[this.history.length - 1] = uri;
+		this.history[this.history.length - 1] = uri.toString();
 		this._isForce = !isRoute;
 		window.location.replace('#' + uri);
 	};
@@ -98,6 +104,14 @@
 	 * @param {String} uri Страница.
 	 */
 	AppRouter.prototype.back = function(uri) {
+		var isHistory = this.history.length > 1;
+
+		if (isHistory) {
+			window.history.go(-1);
+			return;
+		}
+
+		this.history.unshift(uri.toString());
 		this._replace(uri, true);
 	};
 
@@ -115,6 +129,7 @@
 	AppRouter.prototype.start = function() {
 		$(window).on('hashchange', this.onchange);
 		var uri = this.getCurrent();
+		this.history.push(uri);
 		if (this.onroute) this.onroute(uri);
 	};
 

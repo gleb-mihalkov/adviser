@@ -38,10 +38,12 @@
 	 */
 	function encodeValue(value) {
 		if (value == null) return null;
+
 		for (var code in ESCAPE) {
 			if (!ESCAPE.hasOwnProperty(code)) continue;
 			value = value.replace(ESCAPE[code], code);
 		}
+		
 		return value;
 	}
 
