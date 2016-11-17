@@ -13,7 +13,7 @@
 		 * Заголовок страницы.
 		 * @type {String}
 		 */
-		this.title = null;
+		this.title = 'Помощник в принятии решений';
 
 		/**
 		 * Данные приложения.
@@ -44,9 +44,6 @@
 		 * @type {String}
 		 */
 		this.subTemplate = null;
-
-		// Задаем title.
-		this.title = 'Помощник в принятии решений';
 	}
 
 	/**

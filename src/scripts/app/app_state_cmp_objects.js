@@ -41,6 +41,7 @@
 
 		this.crit = this.data.isCrits ? this.data.crits[values[2]] : null;
 		this.maxIndex = length - 1;
+		this.step = this.data.cmpCritsLength + this.index + 1;
 
 		return false;
 	};

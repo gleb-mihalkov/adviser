@@ -1,8 +1,8 @@
 <script type="text/html" id="tpObjects">
 	<?
 		var objects = $1.objects || [];
-		var cmpCount = window.calc.cmpCount(objects.length);
-		var cmpText = window.lang.numberWord(cmpCount, 'шаг', 'шага', 'шагов');
+		var cmpLength = window.calc.cmpCount(objects.length);
+		var cmpText = window.lang.numberWord(cmpLength, 'шаг', 'шага', 'шагов');
 	?>
 	<div class="pg__it">
 		<div class="srn" id="srnMain">
@@ -14,7 +14,7 @@
 							<?= $.template('#tpFormList', objects, 'вариант'); ?>
 							<div class="frm__sd">
 								<p class="tac">Итого:
-									<strong class="js-frm-cc__cc"><?= cmpCount; ?></strong>
+									<strong class="js-frm-cc__cc"><?= cmpLength; ?></strong>
 									<span class="js-frm-cc__tt"><?= cmpText; ?></span>.
 								</p>
 							</div>

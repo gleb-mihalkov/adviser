@@ -37,6 +37,7 @@
 		this.valueB = this.data.crits[values[1]];
 
 		this.maxIndex = length - 1;
+		this.step = this.index + 1;
 		
 		return false;
 	};

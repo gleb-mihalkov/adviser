@@ -22,15 +22,23 @@
 	var lastTemplate = null;
 
 	/**
+	 * Задает заголовок страницы.
+	 * @param {String} title Заголовок.
+	 */
+	function setTitle(title) {
+		var $title = $(document.head).find('[property="og:title"]');
+		document.title = title;
+		$title.attr('content', title);
+	}
+
+	/**
 	 * Обрабатывает адрес страницы.
 	 */
-	function route(uri) {
-		var isBack = router.isBack();
-
+	function route(uri, isBack) {
 		var effect = isBack ? 'back' : 'next';
+		
 		var $pgMain = $('#pgMain');
 		var $pgSub = $('#pgSub');
-		var $ogTitle = $(document.head).find('[property="og:title"]');
 
 		state = AppState.create(uri);
 		var isError = state == null;
@@ -40,8 +48,7 @@
 			throw new Error('Не доделал страницу 404.');
 		}
 
-		document.title = state.title;
-		$ogTitle.attr('content', state.title);
+		setTitle(state.title);
 
 		var template = state.template;
 		var subTemplate = state.subTemplate;

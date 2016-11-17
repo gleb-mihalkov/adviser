@@ -5,20 +5,16 @@
 		var value = $0.value;
 		var crit = $0.crit;
 
-		var step = $0.index + 1;
-		var length = $0.maxIndex + 1;
+		var step = $0.step;
+		var length = $0.data.cmpLength;
 
-		var percent = $0.index / $0.maxIndex * 100;
 		var title = $1;
 	?>
 	<div class="pg__it">
 		<div class="ctr">
 			<div class="ctr__in">
 				<form action="#" class="frm frm--w-sd  js-frm-cp">
-					<h1 class="hg hg--pm">
-						Сравниваем <?= title; ?>
-						<div class="hg__pb" style="width: <?= percent; ?>%"></div>
-					</h1>
+					<h1 class="hg hg--pm">Сравниваем <?= title; ?></h1>
 					<? if (crit) { ?>
 						<p class="tlg">Если учитывать только &laquo;<strong><?= crit; ?></strong>&raquo;, выберите, что для вас важнее:</p>
 					<? } else { ?>

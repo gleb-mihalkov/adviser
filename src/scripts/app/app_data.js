@@ -144,6 +144,15 @@
 		this.cmpCrits = decodeBooleans(params['cc']);
 
 		this.isCrits = this.crits == null || this.crits.length > 0;
+
+		var objCount = this.objects ? this.objects.length : 0;
+		var crtCount = this.crits ? this.crits.length : 0;
+
+		this.cmpObjectsLength = calc.cmpCount(objCount);
+		this.cmpCritsLength = calc.cmpCount(crtCount);
+		this.cmpLength = crtCount > 0
+			? this.cmpObjectsLength * crtCount + this.cmpCritsLength
+			: this.cmpObjectsLength;
 	};
 
 	/**

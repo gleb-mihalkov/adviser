@@ -17,17 +17,6 @@
 	}
 
 	/**
-	 * Получает количество итераций сравнения.
-	 * @param  {Integer} objCount Количество объектов.
-	 * @param  {Integer} crtCount Количество критериев.
-	 * @return {Integer}          Общее количество итераций сравнения.
-	 */
-	function iterCount(objCount, crtCount) {
-		if (!crtCount) crtCount = 1;
-		return cmpCount(objCount) * crtCount + cmpCount(crtCount);
-	}
-
-	/**
 	 * Получает массив пар элементов для сравнения.
 	 * @param  {Number} count  Количество элементов.
 	 * @param  {Number} factor Количество повторений пар элементов.
@@ -134,7 +123,6 @@
 	// Экспорт методов.
 	window.calc = {};
 	window.calc.cmpCount = cmpCount;
-	window.calc.iterCount = iterCount;
 	window.calc.getPair = getPair;
 	window.calc.sort = sort;
 
